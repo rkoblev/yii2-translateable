@@ -185,42 +185,7 @@ $result = $post->hasTranslation('ru-RU');
 
 ### Collecting tabular input
 
-Example of controller actions
-
-```php
-class PostController extends Controller
-{
-    public function actionCreate()
-    {
-        $model = new Post();
-
-        foreach (Yii::$app->request->post('PostTranslation', []) as $language => $data) {
-            foreach ($data as $attribute => $translation) {
-                $model->translate($language)->$attribute = $translation;
-            }
-        }
-
-        //...
-    }
-
-    public function actionUpdate($id)
-    {
-        $model = Post::find()->with('translations')->where(['id' => $id])->one();
-
-        if ($model === null) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        foreach (Yii::$app->request->post('PostTranslation', []) as $language => $data) {
-            foreach ($data as $attribute => $translation) {
-                $model->translate($language)->$attribute = $translation;
-            }
-        }
-
-        //...
-    }
-}
-```
+There is no need to update your controller actions
 
 Example of view form
 
